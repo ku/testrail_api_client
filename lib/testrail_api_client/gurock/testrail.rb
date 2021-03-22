@@ -99,6 +99,7 @@ module TestRail
 			request.basic_auth(@user, @password)
 
 			conn = Net::HTTP.new(url.host, url.port)
+			conn.read_timeout = 120
 			if url.scheme == 'https'
 				conn.use_ssl = true
 				conn.verify_mode = OpenSSL::SSL::VERIFY_NONE
